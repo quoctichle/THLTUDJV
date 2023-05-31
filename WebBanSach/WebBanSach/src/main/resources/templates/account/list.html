@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Account List</title>
+</head>
+<body>
+<h1>Account List</h1>
+<table>
+  <tr>
+    <th>Account ID</th>
+    <th>Username</th>
+    <th>Role</th>
+    <th>Contact</th>
+    <th>Address</th>
+    <th>Name</th>
+    <th>Is Verified</th>
+    <th>Action</th>
+  </tr>
+  <tr th:each="account : ${accounts}">
+    <td th:text="${account.account_id}"></td>
+    <td th:text="${account.username}"></td>
+    <td th:text="${account.role ? 'Admin' : 'User'}"></td>
+    <td th:text="${account.contact}"></td>
+    <td th:text="${account.address}"></td>
+    <td th:text="${account.name}"></td>
+    <td th:text="${account.is_verified ? 'Yes' : 'No'}"></td>
+    <td>
+      <a th:href="@{/accounts/{id}/edit(id=${account.account_id})}">Edit</a>
+      <a th:href="@{/accounts/{id}/delete(id=${account.account_id})}">Delete</a>
+      <a th:href="@{/accounts/{id}(id=${account.account_id})}">Details</a>
+    </td>
+  </tr>
+</table>
+<br>
+<a href="/accounts/create">Create New Account</a>
+</body>
+</html>
