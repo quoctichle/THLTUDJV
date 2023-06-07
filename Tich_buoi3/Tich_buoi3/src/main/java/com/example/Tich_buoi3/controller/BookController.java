@@ -49,7 +49,7 @@ public class BookController {
         model.addAttribute("book", book);
         model.addAttribute("categories", categoryService.getAllCategories());
 
-        return "book/edit"; // Trả về trang view để hiển thị thông tin đầu sách cần chỉnh sửa
+        return "book/edit";
     }
 
     @PostMapping("/edit")

@@ -1,5 +1,6 @@
 package com.example.Tich_buoi3.entity;
-
+import com.example.Tich_buoi3.Validator.annotation.ValidCategoryId;
+import com.example.Tich_buoi3.Validator.annotation.ValidUserId;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Data;
@@ -27,5 +28,10 @@ public class Book {
 
     @ManyToOne@JoinColumn(name="category_id")
     private Category category;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id",referencedColumnName = "id")
+    @ValidUserId
+    private User user;
 
 }
